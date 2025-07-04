@@ -4,18 +4,38 @@ import { fetchTodos, addTodo } from '../actions';
 import { connect } from 'react-redux';
 
 class TodoList extends Component {
-    state = {};
+    state = {
+        inputValue: '',
+    };
 
     componentDidMount() {
         this.props.fetchTodos();
     }
 
+    handleInputChange = (e) => {
+        this.setState({ inputValue: e.target.value });
+    };
+
+    handleAddTodo = () => {
+        const { inputValue } = this.state;
+        if (inputValue.trim()) {
+            this.props.addTodo(inputValue);
+            this.setState({ inputValue: '' });
+        }
+    };
+
     render() {
         const { todos } = this.props.data;
+        const { inputValue } = this.state;
 
         return (
             <>
-                <input placeholder="Enter todo..."></input>
+                <input
+                    placeholder="Enter todo..."
+                    value={inputValue}
+                    onChange={this.handleInputChange}
+                />
+                <button onClick={this.handleAddTodo}>+</button>
                 <ul className="todo-list">
                     {todos && todos.length
                         ? todos.map((todo, index) => {
@@ -39,4 +59,5 @@ const mapStateToProps = ({ data = {}, isLoadingData = false }) => ({
 });
 export default connect(mapStateToProps, {
     fetchTodos,
+    addTodo,
 })(TodoList);

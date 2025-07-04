@@ -17,10 +17,6 @@ export function addTodo(todo) {
             })
             .then(({ data }) => {
                 dispatch(addTodos(data));
-            })
-            .then(axios.get('http://localhost:9091/api/todo'))
-            .then(({ data }) => {
-                dispatch(setTodos(data));
             });
     };
 }
