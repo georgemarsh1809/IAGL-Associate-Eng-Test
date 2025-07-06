@@ -30,14 +30,20 @@ class TodoList extends Component {
 
         return (
             <>
-                <div>
+                <div className="add-todo-input-container">
                     <input
                         placeholder="Enter new item..."
                         value={inputValue}
                         onChange={this.handleInputChange}
                         maxLength={50}
+                        className="add-todo-input"
                     />
-                    <button onClick={this.handleAddTodo}>+</button>
+                    <button
+                        className="add-todo-button"
+                        onClick={this.handleAddTodo}
+                    >
+                        +
+                    </button>
                 </div>
                 <ul className="todo-list">
                     {todos && todos.length

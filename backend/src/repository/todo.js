@@ -1,5 +1,9 @@
 let todoList = {
-    todos: [],
+    todos: [
+        {
+            task: 'This is a todo example',
+        },
+    ],
 };
 
 module.exports = {
