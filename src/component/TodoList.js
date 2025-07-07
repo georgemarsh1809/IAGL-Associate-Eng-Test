@@ -24,6 +24,12 @@ class TodoList extends Component {
         }
     };
 
+    handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            this.handleAddTodo();
+        }
+    };
+
     render() {
         const { todos } = this.props.data;
         const { inputValue } = this.state;
@@ -35,6 +41,7 @@ class TodoList extends Component {
                         placeholder="Enter new item..."
                         value={inputValue}
                         onChange={this.handleInputChange}
+                        onKeyDown={this.handleKeyDown}
                         maxLength={50}
                         className="add-todo-input"
                     />
