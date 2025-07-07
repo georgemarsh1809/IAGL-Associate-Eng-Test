@@ -48,6 +48,7 @@ class TodoList extends Component {
                     <button
                         className="add-todo-button"
                         onClick={this.handleAddTodo}
+                        disabled={!inputValue.trim()}
                     >
                         +
                     </button>
